@@ -298,6 +298,21 @@ export function generateFile(ctx: Context, fileDesc: FileDescriptorProto): [stri
   let hasStreamingMethods = false;
 
   visitServices(fileDesc, sourceInfo, (serviceDesc, sInfo) => {
+    (fileDesc.service || []).forEach((service) => {
+      service.method.forEach((method) => {
+        if (!method.options) {
+
+        }
+
+        // const methodOptions = encodedOptionsToOptions(
+        //   ctx,
+        //   ".google.protobuf.MethodOptions",
+        //   method.options._unknownFields,
+        // );
+
+        console.log("debug1 method option", method.name, method.options);
+      });
+    });
     if (options.nestJs) {
       // NestJS is sufficiently different that we special case all of the client/server interfaces
 
